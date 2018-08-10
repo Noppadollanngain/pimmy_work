@@ -36,7 +36,20 @@
 
     <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
     <style type="text/css">
-      
+      .bg_text{
+        background-color:#fed136; 
+        border-radius: 10px; 
+        padding: 5px;
+        font-family: 'Mitr', sans-serif;
+        font-size: 1.25rem;
+        text-align: center;
+      }
+      .box_text_color{
+        background-color:#FEE795;
+        padding: 5px;
+        border-radius: 5px;
+        font-family: 'Mitr', sans-serif;
+      }
     </style>
   </head>
 
@@ -64,9 +77,9 @@
               <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" style="background-color: Transparent; background-repeat:no-repeat; border: none; cursor:pointer; overflow: hidden; outline:none;font-family: 'Mitr', sans-serif;margin-top: 8px;">เนื้อหาวิชา
               <span class="caret"></span></button>
               <ul class="dropdown-menu">
-                <li><a href="unit1.html" style="font-family: 'Mitr', sans-serif;color: #FFF">บทที่ 1</a></li>
-                <li><a href="unit2.html" style="font-family: 'Mitr', sans-serif;color: #FFF">บทที่ 2</a></li>
-                <li><a href="unit3.html" style="font-family: 'Mitr', sans-serif;color: #FFF">บทที่ 3</a></li>
+                <li><a href="unit1.html" style="font-family: 'Mitr', sans-serif;color: #FFF">บทที่ 1 หลักการทำงานของคอมพิวเตอร์</a></li>
+                <li><a href="unit2.html" style="font-family: 'Mitr', sans-serif;color: #FFF">บทที่ 2 อุปกรณ์ต่อพ่วงกับคอมพิวเตอร์</a></li>
+                <li><a href="unit3.html" style="font-family: 'Mitr', sans-serif;color: #FFF">บทที่ 3 ข้อควรระวังเกี่ยวกับการงาน</a></li>
               </ul>
             </div>
             <li class="nav-item">
@@ -82,7 +95,7 @@
       <div class="container">
         <div class="intro-text" style="color: #99A3A4">
           <h2 style="font-family: 'Mitr', sans-serif;">บทที่ 1</h2>
-          <h2 style="font-family: 'Mitr', sans-serif;">เรื่อง _____________________</h2>
+          <h2 style="font-family: 'Mitr', sans-serif;">เรื่อง หลักการทำงานของคอมพิวเตอร์</h2>
           <br><br>
         </div>
       </div>
@@ -90,38 +103,95 @@
 
     <!-- Services -->
 
-    <section id="frist" style="background-color:#f8f9fa;">
-      
+    <section id="frist" style="background-color:#f8f9fa;font-family: 'Mitr', sans-serif;">
+      <div class="container">
+        <div class="row">
+          <h4 style="font-family: 'Mitr', sans-serif;">หลักการทำงานของคอมพิวเตอร์</h4>
+          การทำงานของคอมพิวเตอร์ไม่ว่าจะเป็นแบบใดหรือประเภทใด มีความซับซ้อนมากน้อยเพียงใด ก็มีพื้นฐานการทำงานเหมือนกัน การทำงานประกอบด้วยหน่วยสำคัญ 4 หน่วย คือ
+        </div>
+        <div class="row">
+              <dir class="col-md-6" >
+                <div class="card text-white bg-light mb-3" style="max-width: 100%;">
+                  <div class="card-header" style="color:#000;">หน่วยรับข้อมูล (Input Unit)</div>
+                  <div class="card-body">
+                    <p class="card-text" style="color:#000;">ทำหน้าที่รับข้อมูลคำสั่งจากผู้ใช้เข้าไป โดยผู้ใช้เป็นผู้ป้อนคำสั่งไปยังเครื่องคอมพิวเตอร์เพื่อนำไปทำการประมวลผล หากไม่สามารถส่งข้อมูลไปยังเครื่องคอมพิวเตอร์ ความสามารถของเครื่องคอมพิวเตอร์ก็จะลดน้อยลง เช่นการจัดทำประวัตินักเรียน ประวัติครูอาจารย์ การคัดคะแนนสอบ การจัดทำตารางสอน ใช้คอมพิวเตอร์ในงานห้องสมุด เป็นต้น ตัวอย่างในการประยุกต์ด้านการศึกษา เช่น โปรแกรมรายงานการลงทะเบียนเรียน โปรแกรมตรวจสอบด้านเอกสาร งานพิมพ์ต่าง ๆ เป็นต้น</p>
+                  </div>
+                </div>
+              </dir>
+              <dir class="col-md-6" >
+                <div class="card text-white bg-light mb-3" style="max-width: 100%;">
+                  <div class="card-header" style="color:#000;">หน่วยแสดงผล (Output Unit)</div>
+                  <div class="card-body">
+                    <p class="card-text" style="color:#000;">เป็นหน่วยที่นำข้อมูลที่ได้รับการประมวลผลมาแสดง หน่วยแสดงผลข้อมูล หมายถึง อุปกรณ์ที่รับข้อมูลจากการประมวลผลของหน่วยประมวลผลกลาง เมื่อหน่วยประมวลผลกลางของเครื่องคอมพิวเตอร์ทำการประมวลผลข้อมูลเสร็จแล้ว ผลลัพธ์จะถูกส่งมาเก็บไว้ในหน่วยความจำเพื่อส่งไปยังหน่วยแสดงผล เพื่อรายงานผลที่ได้จากการประมวลผลให้ผู้ใช้งาน โดยอาจอยู่ในรูปของตัวเลข ตัวอักษร ภาพกราฟิก เสียง เป็นต้น</p>
+                  </div>
+                </div>
+              </dir>
+              <dir class="col-md-6">
+                <div class="card text-white bg-light mb-3" style="max-width: 100%;">
+                  <div class="card-header" style="color:#000;">หน่วยประมวลผล (Processing Unit)</div>
+                  <div class="card-body">
+                    <p class="card-text" style="color:#000;">รับข้อมูลแล้วส่งไปยังหน่วยประมวลผล ซึ่งทำหน้าที่ในการคิดคำนวณหรือประมวลผลข้อมูล โดยทำตามโปรแกรมที่เก็บไว้ในหน่วยความจำหลัก</p>
+                  </div>
+                </div>
+              </dir>
+              <dir class="col-md-6" >
+                <div class="card text-white bg-light mb-3" style="max-width: 100%;">
+                  <div class="card-header" style="color:#000;">หน่วยความจำหลัก (Main Memory)</div>
+                  <div class="card-body">
+                    <p class="card-text" style="color:#000;">ซึ่งเป็นหน่วยความจำที่หน่วยประมวลผลสามารถอ่านเขียนได้รวดเร็วมาก ข้อมูลจะถูกเก็บไว้ที่หน่วยความจำหลักนี้ เพื่อให้หน่วยประมวลผลนำมาตีความและกระทำตามได้อย่างรวดเร็ว ส่วนหน่วยความจำสำรองมีไว้เก็บข้อมูล หรือโปรแกรมที่มีจำนวนมาก และหากจะใช้งานก็มีการถ่ายจากหน่วยความจำสำรองมายังหน่วยความจำ และนำข้อมูลที่เก็บไว้มาประมวลผล</p>
+                  </div>
+                </div>
+              </dir>
+              <div class="col-lg-12">
+                <h5 style="font-family: 'Mitr', sans-serif;">สามารถเขียนการทำงานของเครื่องคอมพิวเตอร์เป็นบล็อกไดอะแกรมง่าย ๆ โดยมีองค์ประกอบพื้นฐานหลัก คือ Input Process และ Output ดังรูปที่ 2.1</h5>
+                <center><img style="height: 180px;width: 600px;" src="assets/imges/unit.gif"></center>
+              </div>
+          </div>
+          <div class="row" style="margin-top: 50px;">
+            <div class="col-md-4">
+                <h5 class="bg_text">ขั้นตอนที่ 1 รับข้อมูลเข้า (Input)</h5>
+                <p class="box_text_color">เริ่มต้นด้วยการนำข้อมูลเข้าเครื่องคอมพิวเตอร์ ซึ่งสามารถผ่านทางอุปกรณ์ชนิดต่าง ๆ แล้วแต่ชนิดของข้อมูลที่จะป้อนเข้าไป เช่น ถ้าเป็นการพิมพ์ข้อมูลจะใช้คีย์บอร์ด เพื่อพิมพ์ข้อความหรือโปรแกรมเข้าเครื่อง ถ้าเป็นการเขียนภาพจะใช้เครื่องอ่านพิกัดภาพกราฟิก โดยมีปากกาชนิดพิเศษสำหรับเขียนภาพ หรือถ้าเป็นการเล่นเกมก็จะมีก้านควบคุม สำหรับเคลื่อนตำแหน่งการเล่นบนจอภาพ และอุปกรณ์อื่น ๆ เช่น สแกนเนอร์ กล้องวิดีโอ ไมโครโฟน หน้าจอแบบสัมผัส เป็นต้น</p>
+              </div>
+              <div class="col-md-4">
+                <h5 class="bg_text">ขั้นตอนที่ 2 ประมวลผลข้อมูล (Process)</h5>
+                <p class="box_text_color">เมื่อนำข้อมูลเข้ามาแล้ว เครื่องจะดำเนินการกับข้อมูลตามคำสั่งที่ได้รับ เพื่อให้ได้ผลลัพธ์ตามที่ต้องการ เรียกการทำงานนี้ว่า “การประมวลผล” ซึ่งอาจมีได้หลายอย่าง เช่น นำข้อมูลมาหาผลรวม นำข้อมูลมาจัดกลุ่ม นำข้อมูลมาหาค่ามากที่สุดหรือน้อยที่สุด เป็นต้น</p>
+              </div>
+              <div class="col-md-4">
+                <h5 class="bg_text">ขั้นตอนที่ 3 แสดงผลลัพธ์ (Output)</h5>
+                <p class="box_text_color">เมื่อคอมพิวเตอร์ประมวลผลคำสั่งไปตามโปรแกรมที่กำหนดไว้เสร็จเรียบร้อย ก็จะแสดงผลลัพธ์จากการประมวลผลมาแสดงให้ผู้ใช้ทราบโดยผ่านอุปกรณ์ต่าง ๆ โดยทั่วไปจะแสดงผ่านทางจอภาพ หรือเรียกกันโดยทั่วไปว่า “จอมอนิเตอร์” (monitor) หรือพิมพ์ข้อมูลออกทางกระดาษ โดยใช้เครื่องพิมพ์ (Printer) ลำโพง หรือโปรเจ็คเตอร์ เป็นต้น</p>
+              </div>
+          </div>
+      </div>
     </section>
 
     <!-- Footer -->
-    <footer style="color:#fff; background-color:#313233; ">
+    <footer style="color:#fff; background-color:#313233;font-family: 'Mitr', sans-serif;margin-top: -100px;">
       <div class="container" >
         <div class="row" style="margin-top: 50px;">
           <div class="col-md-6 col-sm-12">
-              <h4 style="color:#fec503;">อัตลักษณ์</h4>
+              <h4 style="color:#fec503;font-family: 'Mitr', sans-serif;">อัตลักษณ์</h4>
               <p style="font-size: 80%;">“เป็นคนดี มีความรู้ คู่สังคม”</p> 
               <hr style="background-color:#fff;">
           </div>
           <div class="col-md-6 col-sm-12">
-              <h4 style="color:#fec503;">เอกลักษณ์</h4>
+              <h4 style="color:#fec503;font-family: 'Mitr', sans-serif;">เอกลักษณ์</h4>
               <p style="font-size: 80%;">“สร้างคนดี ให้มีความรู้ สู่สังคม”</p> 
               <hr style="background-color:#fff;">
           </div>
           <div class="col-md-12 col-sm-12">
-            <h4 style="color:#fec503;">ปรัชญาของวิทยาลัย</h4>
+            <h4 style="color:#fec503;font-family: 'Mitr', sans-serif;">ปรัชญาของวิทยาลัย</h4>
             <p style="font-size: 90%;">"ความรู้คู่คุณธรรม" วิทยาลัยกำหนดปรัชญาการศึกษาโดยมุ่งพัฒนาผู้เรียนให้มีความสามารถทางวิชาการ มีทักษะในการปฏิบัติงาน และมีคุณสมบัติที่จำเป็นตามลักษณะอาชีพ พร้อมที่จะทำงานร่วมกับผู้อื่น หรือทำงานเป็นอิสระ สามารถปรับปรุงตนให้ทันต่อวิวัฒนาการทางเทคโนโลยี มีระเบียบวินัย มีความสำนึกในจรรยาบรรณวิชาชีพ ควบคู่ไปกับคุณธรรมในการดำรงชีวิต มีความรับผิดชอบต่อตนเอง และสังคม
             </p>
           </div>
           <div class="col-md-12 col-sm-12">
-              <h4 style="color:#fec503;">แผนที่</h4>
+              <h4 style="color:#fec503;font-family: 'Mitr', sans-serif;">แผนที่</h4>
               <a href="https://goo.gl/maps/iURJs7QCwL92" target="_blank">
-                <img class="img-fluid img-thumbnail" src="assets/imges/add_poly.jpg" alt="Poly Map" width="400px">
+                <img class="img-fluid img-thumbnail" src="assets/imges/add_poly2.png" alt="Poly Map" width="400px">
               </a>
           </div>
         </div>
 
-        <div class="row">
+        <div class="row" style="margin-top: 15px;">
           <div class="col-md-4">
             <!-- <span class="copyright">Copyright &copy; Your Website 2018</span> -->
           </div>
@@ -138,7 +208,7 @@
                 </a>
               </li>
             </ul>
-            <span class="copyright">Copyright &copy; Your Website 2018</span>
+            <span style="font-family: 'Mitr', sans-serif;" class="copyright">Copyright &copy; Your Website 2018</span>
           </div>
           <div class="col-md-4">
             
