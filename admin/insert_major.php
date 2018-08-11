@@ -121,7 +121,7 @@
       </form>
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu" data-widget="tree">
+     <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li><a href="index.php"><i class="fa fa-circle-o text-red"></i> <span>ช้อมูลผู้เข้าสอบ</span></a></li>
         <li><a href="javascript:void(0)"><i class="fa fa-circle-o text-yellow"></i> <span>แก้ไขข้อสอบ</span></a></li>
@@ -137,15 +137,16 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Tables
-        <small>advanced tables</small>
+        เพิ่ม-แก้ไข
+        <small> ข้อมูลสาขา</small>
       </h1>
     </section>
 
     <!-- Main content -->
     <section class="content">
+
       <div class="row">
-      	<!--  table -->
+        <!--  table -->
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
@@ -156,11 +157,10 @@
               <table class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th>ชื่อ-สกลุ</th>
-                  <th>สาขา</th>
-                  <th>ชั้นปี</th>
-                  <th>เลขที่</th>
-                  <th>คะแนน</th>
+                  <th>รหัสสาขา</th>
+                  <th>ชื่อสาขา</th>
+                  <th>หมายเหตุ</th>
+                  <th>เงือนไข</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -171,16 +171,14 @@
                   </td>
                   <td>Win 95+</td>
                   <td> 4</td>
-                  <td>X</td>
                 </tr>
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>ชื่อ-สกลุ</th>
-                  <th>สาขา</th>
-                  <th>ชั้นปี</th>
-                  <th>เลขที่</th>
-                  <th>คะแนน</th>
+                  <th>รหัสสาขา</th>
+                  <th>ชื่อสาขา</th>
+                  <th>หมายเหตุ</th>
+                  <th>เงือนไข</th>
                 </tr>
                 </tfoot>
               </table>
@@ -192,6 +190,15 @@
         <!-- /table -->
       </div>
       <!-- /.row -->
+      <div class="col-lg-6">
+        <div class="form-group has-success">
+            <label class="control-label" for="inputSuccess"><i class="fa fa-check"></i>ต้องการเพิ่มสาขาใหม่</label>
+            <input type="text" class="form-control" id="inputSuccess" placeholder="ชื่อสาขา...">
+            <span class="help-block">Input data</span>
+        </div>  
+        <button type="button" class="btn btn-block btn-success btn-flat">เพิ่มสาขา</button>
+      </div>
+          
     </section>
     <!-- /.content -->
   </div>
