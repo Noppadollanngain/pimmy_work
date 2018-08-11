@@ -1,6 +1,6 @@
 <?php
-	$name = $_POST['data_put'];
+	$id = $_POST['data_put'];
 	require'../class.php';
 	$obj = new pimmy_work();
-	$obj->insert_major($name);
+	$obj->delete_major($id);
 ?>

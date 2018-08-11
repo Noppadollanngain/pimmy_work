@@ -4,6 +4,10 @@
 		echo "<script>window.location.href = '../login.php';</script>";
 		exit();
 	}
+  require'../class.php';
+  $obj = new pimmy_work();
+  $obj->showallmajor();
+  $result = $obj->data_major;
 ?>
 <!DOCTYPE html>
 <html>
@@ -110,7 +114,7 @@
         </div>
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu" data-widget="tree">
+     <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li><a href="index.php"><i class="fa fa-circle-o text-red"></i> <span>ช้อมูลผู้เข้าสอบ</span></a></li>
         <li><a href="javascript:void(0)"><i class="fa fa-circle-o text-yellow"></i> <span>แก้ไขข้อสอบ</span></a></li>
@@ -126,15 +130,16 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Tables
-        <small>advanced tables</small>
+        เพิ่ม-แก้ไข
+        <small> ข้อมูลสาขา</small>
       </h1>
     </section>
 
     <!-- Main content -->
     <section class="content">
+
       <div class="row">
-      	<!--  table -->
+        <!--  table -->
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
@@ -145,31 +150,37 @@
               <table class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th>ชื่อ-สกลุ</th>
-                  <th>สาขา</th>
-                  <th>ชั้นปี</th>
-                  <th>เลขที่</th>
-                  <th>คะแนน</th>
+                  <th>รหัสสาขา</th>
+                  <th>ชื่อสาขา</th>
+                  <th>เงือนไข</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td> 4</td>
-                  <td>X</td>
+                  <?php
+                    while ($data_show = mysqli_fetch_assoc($result))
+                    {
+                      echo '<tr>
+                            <td>'.base64_encode($data_show['major_id']).'</td>
+                            <td id="chang_'.$data_show['major_id'].'">'.$data_show['name'].'</td>
+                            <td>
+                             <div class="">
+                              <div class="btn-group">
+                               <button id="bt_c'.$data_show['major_id'].'" onclick="change_major('.$data_show['major_id'].')" type="button" class="btn btn-info">แก้ไข</button>
+                              </div>
+                              <div class="btn-group">
+                               <button onclick="delete_major('.$data_show['major_id'].')" type="button" class="btn btn-danger">ลบ</button>
+                              </div>
+                             </div>
+                            </td>';
+                    }
+                  ?>
                 </tr>
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>ชื่อ-สกลุ</th>
-                  <th>สาขา</th>
-                  <th>ชั้นปี</th>
-                  <th>เลขที่</th>
-                  <th>คะแนน</th>
+                  <th>รหัสสาขา</th>
+                  <th>ชื่อสาขา</th>
+                  <th>เงือนไข</th>
                 </tr>
                 </tfoot>
               </table>
@@ -181,6 +192,15 @@
         <!-- /table -->
       </div>
       <!-- /.row -->
+      <div class="col-lg-6">
+        <div class="form-group has-success">
+            <label class="control-label" for="inputSuccess"><i class="fa fa-check"></i>ต้องการเพิ่มสาขาใหม่</label>
+            <input id="insert_major_name" type="text" class="form-control" id="inputSuccess" placeholder="ชื่อสาขา...">
+            <span class="help-block">Input data</span>
+        </div>  
+        <button onclick="insert_major()" type="button" class="btn btn-block btn-success btn-flat">เพิ่มสาขา</button>
+      </div>
+          
     </section>
     <!-- /.content -->
   </div>
@@ -223,6 +243,61 @@
       'autoWidth'   : false
     })
   })
+
+  function delete_major(id){
+    $.ajax({
+      url:'delete_major.php',
+      type:'post',
+      data:{data_put:id},
+      success:function(result){
+        location.reload();
+      }
+    });
+  }
+
+  function insert_major(){
+    var data_input = $('#insert_major_name').val();
+
+    if (data_input !== "") 
+    {
+      $.ajax({
+        url:'insert_major.php',
+        type:'post',
+        data:{data_put:data_input},
+        success:function(result){
+          location.reload();
+        }
+      });
+    }
+    else{
+      $('#insert_major_name').attr('style','background-color:#F1948A')
+    }
+  }
+
+  function change_major(id){
+    $('#chang_'+id).html('<input style="width:50%;" type="text" class="form-control" placeholder="Enter ..." id="var_chang_'+id+'">');
+    $('#bt_c'+id).attr('onclick','change_major_set('+id+')');
+  }
+
+  function change_major_set(id){
+    var data_input = { "data_input": $('#var_chang_'+id).val() , "data_input_id": id };
+
+    if ($('#var_chang_'+id).val() !== "") 
+    {
+      $.ajax({
+        url:'change_major.php',
+        type:'post',
+        data:data_input,
+        success:function(result){
+          location.reload();
+        }
+      });
+    }
+    else{
+      $('#var_chang_'+id).attr('style','background-color:#F1948A;width:50%;')
+    }
+  }
+
 </script>
 </body>
 </html>

@@ -123,66 +123,17 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Data Tables
-        <small>advanced tables</small>
-      </h1>
-    </section>
 
-    <!-- Main content -->
-    <section class="content">
-      <div class="row">
-      	<!--  table -->
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Hover Data Table</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table class="table table-bordered table-hover">
-                <thead>
-                <tr>
-                  <th>ชื่อ-สกลุ</th>
-                  <th>สาขา</th>
-                  <th>ชั้นปี</th>
-                  <th>เลขที่</th>
-                  <th>คะแนน</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td> 4</td>
-                  <td>X</td>
-                </tr>
-                </tbody>
-                <tfoot>
-                <tr>
-                  <th>ชื่อ-สกลุ</th>
-                  <th>สาขา</th>
-                  <th>ชั้นปี</th>
-                  <th>เลขที่</th>
-                  <th>คะแนน</th>
-                </tr>
-                </tfoot>
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-        <!-- /table -->
+      <div class="box-header with-border">
+        <h3 class="box-title">Different Height</h3>
       </div>
-      <!-- /.row -->
-    </section>
-    <!-- /.content -->
+      <div class="box-body">
+        
+        <input class="form-control" type="text" placeholder="Default input">
+       
+      </div>
+       <!-- /.box-body -->
+
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
