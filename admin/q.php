@@ -123,63 +123,49 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <section class="content-header">
-      <h1>
-        เพิ่มข้อสอบ
-        <small>ข้อสอบ 4 ตัวเลือก</small>
-      </h1>
-    </section>
-    <div class="container" style="padding: 20px">
-      <div class="row">
-        
-      <div class="col-lg-10">
-      <div class="box-body">
-        <form role="form" id="data_q" method="get" onsubmit="insert_q()">
-
-          <div class="form-group">
-            <label>เพิ่มข้อ</label>
-            <input type="number" name="id">
+  	<div class="box">
+  			<?php
+  				require'../class.php';
+  				$obj = new pimmy_work();
+  				$obj->show_q($_GET['id_change']);
+  				$data_q = mysqli_fetch_assoc($obj->data_q);
+  			?>
+  			<div class="form-group">
+                  <label>Select</label><br>
+                  	<?php
+                  		$obj->show_q_num();
+                  		while ($data_q_row = mysqli_fetch_assoc($obj->data_q_num)) {
+                  			echo '<button onclick="change_q('.$data_q_row['id_examination'].')" type="button" class="btn btn-danger">ข้อ '.$data_q_row['id_examination'].'คำถาม '.$data_q_row['examination_q'].
+                  			' เฉลย '.$data_q_row['examination_aws'].'</button><br>';
+                  		}
+                  	?>
+                </div>
+            <div class="box-header" id="in_put">
+              <h3 class="box-title">
+              	<?php echo $data_q['examination_q']; ?> 
+              </h3><i onclick="change_q_form_set(<?php echo $data_q['id_examination']; ?>)" class="fa fa-cog"></i>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+              <table class="table table-condensed">
+                <tbody><tr>
+                  <th style="width: 10px">ข้อ</th>
+                  <th>คำถาม</th>
+                  <th style="width: 40px">แก้ไข</th>
+                </tr>
+                <?php
+                	while ($data_choice = mysqli_fetch_assoc($obj->data_choice)) {
+                		echo '<tr>
+		                  <td>'.$data_choice['choice_id'].'</td>
+		                  <td id="id_choice'.$data_choice['choice_id'].'">'.$data_choice['choice_list'].'</td>
+		                  <td><button onclick="change_q_form('.$data_choice['id_examination'].','.$data_choice['choice_id'].')" type="button" class="btn btn-block btn-info"><i class="fa fa-cog"></i></button></td>
+		                </tr>';
+                	}
+                ?>
+              </tbody></table>
+            </div>
+            <!-- /.box-body -->
           </div>
-          <div class="form-group">
-            <label>Question</label>
-            <textarea name="q" class="form-control" rows="3" placeholder="Enter ..."></textarea>
-          </div>
-          <div class="form-group">
-            <label>choice 1</label>
-            <textarea name="c1" class="form-control" rows="" placeholder="Enter ..."></textarea>
-          </div>
-          <div class="form-group">
-            <label>choice </label>
-            <textarea name="c2" class="form-control" rows="" placeholder="Enter ..."></textarea>
-          </div>
-          <div class="form-group">
-            <label>choice 3</label>
-            <textarea name="c3" class="form-control" rows="" placeholder="Enter ..."></textarea>
-          </div>
-          <div class="form-group">
-            <label>choice 4</label>
-            <textarea name="c4" class="form-control" rows="" placeholder="Enter ..."></textarea>
-          </div>
-          <div class="form-group">
-            <label>choice 5</label>
-            <textarea name="c5" class="form-control" rows="" placeholder="Enter ..."></textarea>
-          </div>
-          <div class="form-group">
-            <label>aws</label>
-            <input type="number" name="aws" min="1" max="5">
-          </div>
-          <div class="box-footer">
-              <button type="submit" class="btn btn-info pull-right">เพิ่มข้อ</button>
-          </div> 
-        </form>
-      </div>
-      </div> 
-
-      </div>      
-    </div>
-    
-       <!-- /.box-body -->
-
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
@@ -209,31 +195,38 @@
 <script src="assets/js/demo.js"></script>
 <!-- page script -->
 <script>
-  $(function () {
-    $('#example1').DataTable()
-    $('#example2').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
-    })
-  })
+	function change_q(id) {
+		window.location.replace('q.php?id_change='+id);
+	}
+	function change_q_form(id,id_ch){
+		$('#id_choice'+id_ch).html('<div class="input-group"><input id="id_choice_set'+id_ch+'" type="text" class="form-control"><span class="input-group-addon"><i onclick="change_choice_form_get('+id+','+id_ch+')" class="fa fa-check"></i></span></div>');
+	}
+	function change_q_form_set(id){
+		$('#in_put').html('<div class="input-group"><input id="data_get_q" type="text" class="form-control"><span class="input-group-addon"><i onclick="change_q_form_get('+id+')" class="fa fa-check"></i></span></div>');
+	}
+	function change_q_form_get(id){
+		var	data_q = {'id':id,'data':$('#data_get_q').val()} ;
+		$.ajax({
+			url:'change_q.php',
+			type:'post',
+			data:data_q,
+			success:function(res){
+				location.reload();
+			}
+		})
+	}
 
-  function insert_q()
-  {
-    var data_in = $('#data_q').serialize();
-    alert(data_in);
-    $.ajax({
-      url:'insert_q.php',
-      tpye:'get',
-      data:data_in,
-      success:function(res){
-        location.reload();
-      }
-    });
-  }
+	function change_choice_form_get(id,id_ch){
+		var	data_q = {'id':id,'id_choice':id_ch,'data':$('#id_choice_set'+id_ch).val()} ;
+		$.ajax({
+			url:'change_choice.php',
+			type:'post',
+			data:data_q,
+			success:function(res){
+				location.reload();
+			}
+		})
+	}
 </script>
 </body>
 </html>
