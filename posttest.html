@@ -91,13 +91,37 @@
     <!-- Services -->
 
     <div id="frist" style="background-color:#f8f9fa;">
-      <div class="row">
-        
+      <div class="row" style="margin-top: 15px;">
+        <div class="container">
+          <h3>บททดสอบหลังเรียน</h3>
+            <form id="show_q">
+
+                <div class="form-group">
+                  <label for="exampleSelect1">คำถามข้อ 1</label>
+                  <div style="margin-left: 50px;">
+                    <label for="exampleSelect1">คำถามข้อ 1</label><br>
+                    <label for="exampleSelect1">คำถามข้อ 2</label><br>
+                    <label for="exampleSelect1">คำถามข้อ 3</label><br>
+                    <label for="exampleSelect1">คำถามข้อ 4</label><br>
+                    <label for="exampleSelect1">คำถามข้อ 5</label><br>
+                  </div>
+                  <label for="exampleSelect1">เลือกคำตอบ</label>
+                  <select class="form-control" id="exampleSelect1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>               
+            </form>
+            <button type="submit" class="btn btn-primary pull-right" onclick="check_aws()">Submit</button>
+        </div>    
       </div>
     </div>
 
     <!-- Footer -->
-    <footer style="color:#fff; background-color:#313233;margin-top: -150px;font-family: 'Mitr', sans-serif;">
+    <footer style="color:#fff; background-color:#313233;margin-top: 15px;font-family: 'Mitr', sans-serif;">
       <div class="container" >
         <div class="row" style="margin-top: 50px;">
           <div class="col-md-6 col-sm-12">
@@ -171,7 +195,21 @@
 
     <!-- Custom scripts for this template -->
     <script src="assets/js//agency.min.js"></script>
-
+    <script type="text/javascript">
+      $('#show_q').load('post.php');
+      function check_aws() {
+        var data_check = $('#show_q').serializeArray();
+        $.ajax({
+          url:'check_aws_post.php',
+          type:'post',
+          data:data_check,
+          success:function(res){
+            alert(res);
+            location.reload();
+          }
+        });
+      }
+    </script>
   </body>
 
 </html>

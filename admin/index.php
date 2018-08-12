@@ -4,6 +4,12 @@
 		echo "<script>window.location.href = '../login.php';</script>";
 		exit();
 	}
+      $host = 'localhost';
+      $user = 'root';
+      $pass = '';
+      $table = 'pimmy_work';
+      $con = mysqli_connect($host,$user,$pass,$table) or die(mysqli_error());
+      mysqli_set_charset($con,'utf8');
 ?>
 <!DOCTYPE html>
 <html>
@@ -85,7 +91,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="logout.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -150,18 +156,30 @@
                   <th>ชั้นปี</th>
                   <th>เลขที่</th>
                   <th>คะแนน</th>
+                  <th>ลบ</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td> 4</td>
-                  <td>X</td>
-                </tr>
+                  <?php
+                    require'../class.php';
+                    require'pagination/pagination.php';
+                    $obj = new pimmy_work();
+                    
+
+                    $result_main = page_query($con, $obj->show_user(), 10);
+
+                    while ($data_show = mysqli_fetch_assoc($result_main)) {
+                      echo '<tr>
+                            <td>'.$data_show['name'].'</td>
+                            <td>'.$obj->show_major($data_show['major']).'</td>
+                            <td>'.$data_show['year'].'</td>
+                            <td>'.$data_show['number'].'</td>
+                            <td>'.$data_show['point'].'</td>
+                            <td><button onclick="delete_user('.$data_show['id_user'].')" type="button" class="btn btn-block btn-danger">ลบ</button></td>
+                          </tr>';
+                    }
+
+                  ?>
                 </tbody>
                 <tfoot>
                 <tr>
@@ -170,6 +188,7 @@
                   <th>ชั้นปี</th>
                   <th>เลขที่</th>
                   <th>คะแนน</th>
+                  <th>ลบ</th>
                 </tr>
                 </tfoot>
               </table>
@@ -179,6 +198,17 @@
           <!-- /.box -->
         </div>
         <!-- /table -->
+        <center>
+        <?php
+            page_link_border("solid","1px","#2E9AFE");
+              page_border_radius("1px");
+              page_link_bg_color("#007bff","#81F7D8");
+              page_link_font("16px","true","false","false");
+              page_link_color("#FFFFFF");
+              page_echo_pagenums(5,"true","true");
+          ?>
+            
+          </center>
       </div>
       <!-- /.row -->
     </section>
@@ -223,6 +253,16 @@
       'autoWidth'   : false
     })
   })
+  function delete_user(id){
+    $.ajax({
+      url:'delete_user.php',
+      type:'post',
+      data:{data_put:id},
+      success:function(){
+        location.reload();
+      }
+    })
+  }
 </script>
 </body>
 </html>

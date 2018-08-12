@@ -138,7 +138,7 @@
 
           <div class="form-group">
             <label>เพิ่มข้อ</label>
-            <input type="number" name="id">
+            <input type="number" name="id" max="15" min="1">
           </div>
           <div class="form-group">
             <label>Question</label>
@@ -224,7 +224,6 @@
   function insert_q()
   {
     var data_in = $('#data_q').serialize();
-    alert(data_in);
     $.ajax({
       url:'insert_q.php',
       tpye:'get',

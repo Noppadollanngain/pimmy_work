@@ -7,7 +7,7 @@
 	{
 
 		private $link;
-		public $data_major,$data_q,$data_choice,$data_q_num;
+		public $data_major,$data_q,$data_choice,$data_q_num,$data_test_q,$data_test_c;
 
 		function __construct()
 		{	
@@ -93,6 +93,45 @@
 		}
 		public function change_choice($id,$id_ch,$data){
 			$sql = "UPDATE `examination_q` SET `choice_list`= '".$data."' WHERE `id_examination` = ".$id." AND `choice_id` = ".$id_ch;
+			mysqli_query($this->link,$sql);
+		}
+
+		public function test_ex_q(){
+			$sql = "SELECT `id_examination`, `examination_q` FROM `examination`";
+			$this->data_test_q = mysqli_query($this->link,$sql);
+		}
+
+		public function test_ex_c($id){
+			$sql = "SELECT `choice_id`, `choice_list` FROM `examination_q` WHERE `id_examination` = ".$id;
+			$this->data_test_c = mysqli_query($this->link,$sql);
+		}
+
+		public function check_aws($aws){
+			$aws_ex = explode(" ", $aws);
+			$sql = "SELECT * FROM `examination` WHERE `id_examination` = ".$aws_ex[0]." AND `examination_aws` = ".$aws_ex[1];
+			$row = mysqli_num_rows(mysqli_query( $this->link,$sql ) );
+			
+			return $row;
+		}
+
+		public function insert_user($name,$major,$year,$number,$sum){
+			$sql = "INSERT INTO `data_user`( `name`, `major`, `year`, `number`, `point`) VALUES ('".$name."',".$major.",".$year.",".$number.",".$sum.")";
+			mysqli_query($this->link,$sql);
+		}
+
+		public function show_user(){
+			$sql = "SELECT * FROM `data_user`";
+			return $sql;
+		}
+
+		public function show_major($id){
+			$sql = "SELECT `name` FROM `major` WHERE `major_id` = ".$id;
+			$result = mysqli_fetch_assoc( mysqli_query($this->link,$sql));
+			return $result['name'];
+		}
+
+		public function del_user($id){
+			$sql = "DELETE FROM `data_user` WHERE `id_user` = ".$id;
 			mysqli_query($this->link,$sql);
 		}
 
