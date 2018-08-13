@@ -38,9 +38,6 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id_admin`, `user`, `pass`) VALUES
-(1, 'admin', 'admin');
-
 -- --------------------------------------------------------
 
 --
@@ -60,9 +57,6 @@ CREATE TABLE `data_user` (
 -- Dumping data for table `data_user`
 --
 
-INSERT INTO `data_user` (`id_user`, `name`, `major`, `year`, `number`, `point`) VALUES
-(1, 'ดาวดวง  เดืนเอบ', 1, 2, 51, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -78,9 +72,6 @@ CREATE TABLE `examination` (
 --
 -- Dumping data for table `examination`
 --
-
-INSERT INTO `examination` (`id_examination`, `examination_q`, `examination_aws`) VALUES
-(1, 'หลักการทำงานของเครื่องคอมพิวเตอร์มีหน่วยสำคัญกี่หน่วย', 5);
 
 -- --------------------------------------------------------
 
@@ -98,13 +89,6 @@ CREATE TABLE `examination_q` (
 -- Dumping data for table `examination_q`
 --
 
-INSERT INTO `examination_q` (`id_examination`, `choice_id`, `choice_list`) VALUES
-(1, 1, '2 หน่วย'),
-(1, 2, '3 หน่วย'),
-(1, 3, '4 หน่วย'),
-(1, 4, '5 หน่วย'),
-(1, 5, 'ถูกทั้งข้อ ก. และข้อ ข.');
-
 -- --------------------------------------------------------
 
 --
@@ -120,8 +104,6 @@ CREATE TABLE `major` (
 -- Dumping data for table `major`
 --
 
-INSERT INTO `major` (`major_id`, `name`) VALUES
-(1, 'ไฟฟ้า');
 
 --
 -- Indexes for dumped tables
@@ -166,25 +148,25 @@ ALTER TABLE `major`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT for table `data_user`
 --
 ALTER TABLE `data_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT for table `examination`
 --
 ALTER TABLE `examination`
-  MODIFY `id_examination` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_examination` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT for table `major`
 --
 ALTER TABLE `major`
-  MODIFY `major_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `major_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- Constraints for dumped tables
