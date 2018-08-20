@@ -135,7 +135,7 @@
                   	<?php
                   		$obj->show_q_num();
                   		while ($data_q_row = mysqli_fetch_assoc($obj->data_q_num)) {
-                  			echo '<button onclick="change_q('.$data_q_row['id_examination'].')" type="button" class="btn btn-danger col-lg-12">ข้อ '.$data_q_row['id_examination'].'คำถาม '.$data_q_row['examination_q'].
+                  			echo '<button onclick="change_q('.$data_q_row['id_examination'].')" type="button" class="btn btn-danger col-lg-12" style="text-align: left;">ข้อ '.$data_q_row['id_examination'].'คำถาม '.$data_q_row['examination_q'].
                   			' เฉลย '.$data_q_row['examination_aws'].'</button><br>';
                   		}
                   	?>

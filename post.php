@@ -28,7 +28,7 @@
     <option value="5">ชั้นปี 4</option>
   </select>
   <br>
-  <div class="form-group">
+  <div class="form-group" style="">
     <fieldset>
       <label class="control-label" for="readOnlyInput">เลขที่</label>
       <input type="number" name="number" class="form-control" type="text" placeholder="เลขที่...">
@@ -38,8 +38,8 @@
 <?php
 
 	while ($data_test_q = mysqli_fetch_assoc($obj->data_test_q)) {
-		echo '<div class="form-group">
-                  <label for="exampleSelect1">ข้อที่ '.$data_test_q['id_examination'].' '.$data_test_q['examination_q'].'</label><div style="margin-left: 50px;">';
+		echo '<div class="form-group" style="margin-top: 50px;">
+                  <label for="exampleSelect1" style="color:#FFF;background-color: #AE4DF5;padding:10px;border-radius: 15px;">ข้อที่ '.$data_test_q['id_examination'].' '.$data_test_q['examination_q'].'</label><div style="margin-left: 50px;">';
         $obj->test_ex_c($data_test_q['id_examination']);
         while ($data_test_c = mysqli_fetch_assoc($obj->data_test_c)) {
         	echo '<label for="exampleSelect1">'.$data_test_c['choice_id'].' => '.$data_test_c['choice_list'].'</label><br>';
