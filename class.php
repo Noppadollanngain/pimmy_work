@@ -97,7 +97,7 @@
 		}
 
 		public function test_ex_q(){
-			$sql = "SELECT `id_examination`, `examination_q` FROM `examination`";
+			$sql = "SELECT `id_examination`, `examination_q` FROM `examination` ORDER BY RAND()";
 			$this->data_test_q = mysqli_query($this->link,$sql);
 		}
 
@@ -132,6 +132,36 @@
 
 		public function del_user($id){
 			$sql = "DELETE FROM `data_user` WHERE `id_user` = ".$id;
+			mysqli_query($this->link,$sql);
+		}
+
+		public function regis($id,$pwd,$fname,$lname,$major,$year,$num){
+			$sql = 'INSERT INTO `data_user`( `user`, `pws`, `name`, `major`, `year`, `number`) VALUES ("'.$id.'","'.$pwd.'","'.$fname.' '.$lname.'",'.$major.','.$year.','.$num.')';
+			mysqli_query($this->link,$sql);
+		}
+
+		public function login_user($id,$pwd){
+			$sql = 'SELECT *  FROM `data_user` WHERE `user` = "'.$id.'" AND `pws` = "'.$pwd.'"';
+			$res = mysqli_query($this->link,$sql);
+			$data = mysqli_fetch_assoc($res);
+			if(mysqli_num_rows($res)==1){
+
+				session_start();
+				$_SESSION['login'] = TRUE;
+				$_SESSION['id'] = $data['id_user'];
+
+			}
+		}
+
+		public function add_pre($sum){
+			session_start();
+			$sql = 'UPDATE `data_user` SET `point_p` = '.$sum.' WHERE `data_user`.`id_user` = '.$_SESSION['id'];
+			mysqli_query($this->link,$sql);
+		}
+
+		public function add_post($sum){
+			session_start();
+			$sql = 'UPDATE `data_user` SET `point_l` = '.$sum.' WHERE `data_user`.`id_user` = '.$_SESSION['id'];
 			mysqli_query($this->link,$sql);
 		}
 

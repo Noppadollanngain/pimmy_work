@@ -51,6 +51,8 @@
 	 	$sum += $obj->check_aws($_POST['aws_15']);
 	}
 
-	echo "ได้รับคะแนน ".$sum;
+	$obj->add_pre($sum);
+
+	echo "ต้องการทราบคะแนนติดต่อผู้ควบคุม";
 
 ?>

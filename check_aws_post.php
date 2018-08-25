@@ -1,4 +1,5 @@
 <?php
+
 	require'class.php';
 	$sum = 0;
 
@@ -50,13 +51,8 @@
 	 	$sum += $obj->check_aws($_POST['aws_15']);
 	}
 
-	if (isset($_POST["name"]) && !empty($_POST["name"]) && isset($_POST["number"]) && !empty($_POST["number"])) {
-		$obj->insert_user($_POST["name"],$_POST["major"],$_POST["year"],$_POST["number"],$sum);
-		echo "ต้องการทราบคะแนนติดต่อผู้ควบคุม";
-	}
-	else{
-		echo "หรอกข้อมูลให้ครบ";
-	}
+	$obj->add_post($sum);
 
+	echo "ต้องการทราบคะแนนติดต่อผู้ควบคุม";
 	
 ?>

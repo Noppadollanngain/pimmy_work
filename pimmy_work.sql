@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 12, 2018 at 10:19 PM
+-- Generation Time: Aug 25, 2018 at 02:33 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -46,16 +46,21 @@ CREATE TABLE `admin` (
 
 CREATE TABLE `data_user` (
   `id_user` int(11) NOT NULL,
+  `user` text NOT NULL,
+  `pws` text NOT NULL,
   `name` text NOT NULL,
   `major` int(11) NOT NULL,
   `year` int(11) NOT NULL,
   `number` int(11) NOT NULL,
-  `point` int(11) NOT NULL
+  `point_l` int(11) NOT NULL,
+  `point_p` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `data_user`
 --
+
+
 
 -- --------------------------------------------------------
 
@@ -73,6 +78,8 @@ CREATE TABLE `examination` (
 -- Dumping data for table `examination`
 --
 
+
+
 -- --------------------------------------------------------
 
 --
@@ -89,6 +96,8 @@ CREATE TABLE `examination_q` (
 -- Dumping data for table `examination_q`
 --
 
+
+
 -- --------------------------------------------------------
 
 --
@@ -103,7 +112,6 @@ CREATE TABLE `major` (
 --
 -- Dumping data for table `major`
 --
-
 
 --
 -- Indexes for dumped tables

@@ -155,7 +155,8 @@
                   <th>สาขา</th>
                   <th>ชั้นปี</th>
                   <th>เลขที่</th>
-                  <th>คะแนน</th>
+                  <th>คะแนนก่อน</th>
+                  <th>คะแนนหลัง</th>
                   <th>ลบ</th>
                 </tr>
                 </thead>
@@ -174,7 +175,8 @@
                             <td>'.$obj->show_major($data_show['major']).'</td>
                             <td>'.$data_show['year'].'</td>
                             <td>'.$data_show['number'].'</td>
-                            <td>'.$data_show['point'].'</td>
+                            <td>'.$data_show['point_p'].'</td>
+                            <td>'.$data_show['point_l'].'</td>
                             <td><button onclick="delete_user('.$data_show['id_user'].')" type="button" class="btn btn-block btn-danger">ลบ</button></td>
                           </tr>';
                     }

@@ -91,10 +91,10 @@
     <!-- Services -->
 
     <div id="frist" style="background-color:#f8f9fa;">
-      <div class="row" style="margin-top: 40px;margin-bottom: 40px;">
-        <div class="container">
-          <h3 style="font-family: 'Mitr', sans-serif;">บททดสอบหลังเรียน</h3>
-            <form id="show_q" style="font-family: 'Mitr', sans-serif;">
+      <div class="row" style="">
+        <div class="container" id="show_q">
+          <h3 style="font-family: 'Mitr', sans-serif;margin-top: 40px;">บททดสอบหลังเรียน</h3>
+            <form style="font-family: 'Mitr', sans-serif;">
 
                 <div class="form-group">
                   <label for="exampleSelect1">คำถามข้อ 1</label>
@@ -113,9 +113,10 @@
                     <option>4</option>
                     <option>5</option>
                   </select>
-                </div>               
+                </div>       
+                        
             </form>
-            <button style="margin-top: 20px" type="submit" class="btn btn-primary pull-right" onclick="check_aws()">ส่งคำตอบ</button>
+            <button style="margin-top: 20px;margin-bottom: 40px;" type="submit" class="btn btn-primary pull-right" onclick="check_aws()">ส่งคำตอบ</button>
         </div>    
       </div>
     </div>
@@ -198,13 +199,45 @@
     <script type="text/javascript">
       $('#show_q').load('post.php');
       function check_aws() {
-        var data_check = $('#show_q').serializeArray();
+        var data_check = $('#show_q2').serializeArray();
         $.ajax({
           url:'check_aws_post.php',
           type:'post',
           data:data_check,
           success:function(res){
             alert(res);
+          }
+        });
+      }
+      function login_regis(){
+        var data_regis = $('#data_regis').serializeArray();
+        $.ajax({
+          url:'regis_data.php',
+          type:'post',
+          data:data_regis,
+          success:function(res){
+            alert(res);
+          }
+        });
+      }
+      function login(){
+        var data_login = $('#data_login').serializeArray();
+        $.ajax({
+          url:'login_user.php',
+          type:'post',
+          data:data_login,
+          success:function(res){
+            location.reload();
+          }
+        });
+      }
+
+       function logout(){
+        $.ajax({
+          url:'del_ses.php',
+          type:'post',
+          data:{data:true},
+          success:function(res){
             location.reload();
           }
         });
